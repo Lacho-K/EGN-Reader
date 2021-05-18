@@ -48,7 +48,7 @@ function CheckEGN(egn)
     let regionStart = region.split(' ')[1];
     let regionName = region.split(' ')[0];
     let kidsCount = Math.floor(parseInt(egn.value.substring(6,9) - regionStart)/2);
-    let kid = DetermineGender(regionCode);    
+    let kid = DetermineGender(regionCode, kidsCount);    
 
     if (month> 40) 
     {
@@ -88,12 +88,33 @@ function CheckEGN(egn)
 
     if((egn.value[8] - '0') % 2 == 0)
     {       
-        document.getElementById("Info").innerHTML = "Мъж роден на " + day  + " " + dict[month] + " " + year + "г. в регион " + regionName + " като преди него в този ден и регион са се родили " + kidsCount + " " + kid;       
+        if(kidsCount < 1)
+        {
+                document.getElementById("Info").innerHTML = "Мъж роден на " + day  + " " + dict[month] + " " + year + "г. в регион " + regionName + " като е бил първото момче родено в този ден и регион.";
+        }
+        else if(kidsCount == 1)
+        {
+            document.getElementById("Info").innerHTML = "Мъж роден на " + day  + " " + dict[month] + " " + year + "г. в регион " + regionName + " като преди него в този ден и регион се e родилo " + kidsCount + " " + kid;
+        }
+        else
+        {
+            document.getElementById("Info").innerHTML = "Мъж роден на " + day  + " " + dict[month] + " " + year + "г. в регион " + regionName + " като преди него в този ден и регион са се родили " + kidsCount + " " + kid;       
+        }
     }
     else if((egn.value[8] - '0') % 2 != 0)
-    {
-        document.getElementById("Info").innerHTML = "Жена родена на " + day + " " + dict[month] + " " + year + "г. в регион " + regionName + " като преди нея в този ден и регион са се родили " + kidsCount + " " + kid;
-    }
+
+       if(kidsCount < 1)
+        {
+            document.getElementById("Info").innerHTML = "Жена родена на " + day + " " + dict[month] + " " + year + "г. в регион " + regionName + " като е била първото момиче родено в този ден и регион.";
+        }
+        else if(kidsCount == 1)
+        {
+            document.getElementById("Info").innerHTML = "Жена родена на " + day + " " + dict[month] + " " + year + "г. в регион " + regionName + " като преди нея в този ден и регион се е родило" + kidsCount + " " + kid;
+        }
+       else
+       {
+            document.getElementById("Info").innerHTML = "Жена родена на " + day + " " + dict[month] + " " + year + "г. в регион " + regionName + " като преди нея в този ден и регион са се родили " + kidsCount + " " + kid;
+       }
     console.log(regionStart);
     return true;
     
@@ -231,15 +252,23 @@ function GetRegion(regionRaw)
         return "Друг/Неизвестен 926";
     }
 }
-function DetermineGender(regCode)
+function DetermineGender(regCode, kidsCount)
 {
     let isMale = parseInt(regCode) % 2 == 0;
     if(isMale)
     {
+        if(kidsCount == 1)
+        {
+            return "момче";
+        }
         return "момчета";
     }
     else
     {
+        if(kidsCount == 1)
+        {
+            return "момиче";
+        }
          return "момичета";
     }
 }
