@@ -1,0 +1,33 @@
+#EGN
+{
+    background-color: burlywood;
+    color: crimson;
+    margin-left: 45%;
+    padding: 0.2%;
+}
+body
+{
+    background-color: black;
+}
+button
+{
+    margin-left: 23%;
+    background-color: burlywood;
+    color: crimson;
+    padding: 0.2%;
+}
+#Valider
+{
+    margin-left: 20%;
+    display: inline-block;
+}
+#Info
+{
+    margin-left: 22%;
+    color: darkgray;
+}
+#EGN-Info
+{
+    margin-left: 50%;
+    color: darkgray;
+}
