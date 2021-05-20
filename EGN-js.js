@@ -109,7 +109,7 @@ function CheckEGN(egn)
         }
         else if(kidsCount == 1)
         {
-            document.getElementById("Info").innerHTML = "Жена родена на " + day + " " + dict[month] + " " + year + "г. в регион " + regionName + " като преди нея в този ден и регион се е родило" + kidsCount + " " + kid;
+            document.getElementById("Info").innerHTML = "Жена родена на " + day + " " + dict[month] + " " + year + "г. в регион " + regionName + " като преди нея в този ден и регион се е родило " + kidsCount + " " + kid;
         }
         else if(kidsCount > 1)
         {
